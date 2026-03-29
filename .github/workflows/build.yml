@@ -120,6 +120,7 @@ jobs:
           msystem: ${{ matrix.arch == 'x86_64' && 'MINGW64' || 'MINGW32' }}
           update: true
           install: >-
+            base-devel
             mingw-w64-${{ matrix.arch }}-gcc
             mingw-w64-${{ matrix.arch }}-gmp
             mingw-w64-${{ matrix.arch }}-expat
@@ -127,16 +128,11 @@ jobs:
             mingw-w64-${{ matrix.arch }}-zlib
             mingw-w64-${{ matrix.arch }}-c-ares
             mingw-w64-${{ matrix.arch }}-libssh2
-            autoconf
-            automake
-            libtool
-            pkg-config
-            make
-            gettext
-            patch
+            tar
+            xz
       - name: Build
         run: |
-          autoreconf -i
+          AUTOPOINT=true autoreconf -i
           ./configure \
             --host=${{ matrix.arch }}-w64-mingw32 \
             --prefix=/usr/local/${{ matrix.arch }}-w64-mingw32 \
