@@ -100,3 +100,59 @@ jobs:
     - name: Build aria2
       run: |
         make -j"$(nproc 2> /dev/null || sysctl -n hw.ncpu)" check
+
+  windows-build:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        include:
+          - arch: x86_64
+          - arch: i686
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: ${{ matrix.arch == 'x86_64' && 'MINGW64' || 'MINGW32' }}
+          update: true
+          install: >-
+            mingw-w64-${{ matrix.arch }}-gcc
+            mingw-w64-${{ matrix.arch }}-gmp
+            mingw-w64-${{ matrix.arch }}-expat
+            mingw-w64-${{ matrix.arch }}-sqlite3
+            mingw-w64-${{ matrix.arch }}-zlib
+            mingw-w64-${{ matrix.arch }}-c-ares
+            mingw-w64-${{ matrix.arch }}-libssh2
+            autoconf
+            automake
+            libtool
+            pkg-config
+            make
+      - name: Build
+        run: |
+          autoreconf -i
+          ./configure \
+            --host=${{ matrix.arch }}-w64-mingw32 \
+            --prefix=/usr/local/${{ matrix.arch }}-w64-mingw32 \
+            --without-libxml2 \
+            --with-libexpat \
+            --with-libgmp \
+            --with-libcares \
+            --with-libz \
+            --with-sqlite3 \
+            --with-libssh2 \
+            --without-gnutls \
+            --without-openssl \
+            --with-wintls \
+            ARIA2_STATIC=yes \
+            CPPFLAGS="-I/usr/local/${{ matrix.arch }}-w64-mingw32/include" \
+            LDFLAGS="-L/usr/local/${{ matrix.arch }}-w64-mingw32/lib"
+          make -j$(nproc)
+          ${{ matrix.arch }}-w64-mingw32-strip src/aria2c.exe
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aria2c-win-${{ matrix.arch }}
+          path: src/aria2c.exe
