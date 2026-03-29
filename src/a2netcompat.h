@@ -38,9 +38,10 @@
 #include "a2io.h"
 
 #ifdef __MINGW32__
-#  ifdef HAVE_WS2TCPIP_H
-#    include <ws2tcpip.h>
-#  endif // HAVE_WS2TCPIP_H
+#  include <ws2tcpip.h>
+#  include <winsock2.h>
+#  include <windows.h>
+#  include <winioctl.h>
 #endif   // __MINGW32__
 
 #ifdef __MINGW32__
@@ -93,7 +94,7 @@
 
 #include <string>
 
-#ifdef HAVE_WINSOCK2_H
+#if defined(HAVE_WINSOCK2_H) || defined(__MINGW32__)
 #  define sock_t SOCKET
 #else
 #  define sock_t int
