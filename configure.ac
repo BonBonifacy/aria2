@@ -658,42 +658,42 @@ esac
 AC_FUNC_ALLOCA
 AC_PROG_EGREP
 
-AC_CHECK_HEADERS([argz.h \
-                  arpa/inet.h \
-                  fcntl.h \
-                  float.h \
-                  inttypes.h \
-                  langinfo.h \
-                  libintl.h \
-                  limits.h \
-                  locale.h \
-                  malloc.h \
-                  netdb.h \
-                  netinet/in.h \
-                  netinet/tcp.h \
-                  poll.h \
-                  port.h \
-                  signal.h \
-                  stddef.h \
-                  stdint.h \
-                  stdio_ext.h \
-                  stdlib.h \
-                  string.h \
-                  strings.h \
-                  sys/ioctl.h \
-                  sys/param.h \
-                  sys/resource.h \
-                  sys/signal.h \
-                  sys/socket.h \
-                  sys/time.h \
-                  sys/types.h \
-                  sys/uio.h \
-                  sys/utsname.h \
-                  termios.h \
-                  unistd.h \
-                  utime.h \
-                  wchar.h \
-                  ifaddrs.h \
+AC_CHECK_HEADERS([argz.h
+                  arpa/inet.h
+                  fcntl.h
+                  float.h
+                  inttypes.h
+                  langinfo.h
+                  libintl.h
+                  limits.h
+                  locale.h
+                  malloc.h
+                  netdb.h
+                  netinet/in.h
+                  netinet/tcp.h
+                  poll.h
+                  port.h
+                  signal.h
+                  stddef.h
+                  stdint.h
+                  stdio_ext.h
+                  stdlib.h
+                  string.h
+                  strings.h
+                  sys/ioctl.h
+                  sys/param.h
+                  sys/resource.h
+                  sys/signal.h
+                  sys/socket.h
+                  sys/time.h
+                  sys/types.h
+                  sys/uio.h
+                  sys/utsname.h
+                  termios.h
+                  unistd.h
+                  utime.h
+                  wchar.h
+                  ifaddrs.h
                   pwd.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
@@ -744,50 +744,50 @@ AC_FUNC_STRTOD
 # Don't use AC_FUNC_MMAP because it fails on some platforms (e.g.,
 # OpenWRT) which have mmap and it works in the way we use in aria2.
 # Instead use mmap in AC_CHECK_FUNCS list.
-AC_CHECK_FUNCS([__argz_count \
-                __argz_next \
-                __argz_stringify \
-                atexit \
-                ftruncate \
-                getcwd \
-                getentropy \
-                gethostbyaddr \
-                gethostbyname \
-                getifaddrs \
-                getpagesize \
-                memchr \
-                memmove \
-                mempcpy \
-                memset \
-                mkdir \
-                mmap \
-                munmap \
-                nl_langinfo \
-                posix_fadvise \
-                posix_memalign \
-                pow \
-                putenv \
-                rmdir \
-                select \
-                setlocale \
-                sigaction \
-                sleep \
-                socket \
-                stpcpy \
-                strcasecmp \
-                strchr \
-                strcspn \
-                strdup \
-                strerror \
-                strncasecmp \
-                strstr \
-                strtol \
-                strtoul \
-                strtoull \
-                tzset \
-                unsetenv \
-                usleep \
-                utime \
+AC_CHECK_FUNCS([__argz_count
+                __argz_next
+                __argz_stringify
+                atexit
+                ftruncate
+                getcwd
+                getentropy
+                gethostbyaddr
+                gethostbyname
+                getifaddrs
+                getpagesize
+                memchr
+                memmove
+                mempcpy
+                memset
+                mkdir
+                mmap
+                munmap
+                nl_langinfo
+                posix_fadvise
+                posix_memalign
+                pow
+                putenv
+                rmdir
+                select
+                setlocale
+                sigaction
+                sleep
+                socket
+                stpcpy
+                strcasecmp
+                strchr
+                strcspn
+                strdup
+                strerror
+                strncasecmp
+                strstr
+                strtol
+                strtoul
+                strtoull
+                tzset
+                unsetenv
+                usleep
+                utime
                 utimes])
 
 dnl Put tcmalloc/jemalloc checks after the posix_memalign check.
