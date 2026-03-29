@@ -728,8 +728,8 @@ if test "x$have_timespec" = "xyes"; then
 fi
 
 # Checks for library functions.
-AM_GNU_GETTEXT([external])
-AM_GNU_GETTEXT_VERSION([0.20])
+# AM_GNU_GETTEXT([external])
+# AM_GNU_GETTEXT_VERSION([0.20])
 AC_FUNC_ERROR_AT_LINE
 AC_PROG_GCC_TRADITIONAL
 
@@ -1054,7 +1054,6 @@ AC_CONFIG_FILES([Makefile
                 src/libaria2.pc
                 src/includes/Makefile
                 test/Makefile
-                po/Makefile.in
                 lib/Makefile
                 doc/Makefile
                 doc/manual-src/Makefile

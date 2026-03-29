@@ -123,8 +123,6 @@ jobs:
             base-devel
             autotools
             git
-            gettext
-            cvs
             mingw-w64-${{ matrix.arch }}-gcc
             mingw-w64-${{ matrix.arch }}-gmp
             mingw-w64-${{ matrix.arch }}-expat
