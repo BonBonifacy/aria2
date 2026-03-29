@@ -123,6 +123,8 @@ jobs:
             base-devel
             autotools
             git
+            gettext
+            cvs
             mingw-w64-${{ matrix.arch }}-gcc
             mingw-w64-${{ matrix.arch }}-gmp
             mingw-w64-${{ matrix.arch }}-expat
@@ -134,7 +136,7 @@ jobs:
             xz
       - name: Build
         run: |
-          AUTOPOINT=true autoreconf -i
+          autoreconf -i
           ./configure \
             --host=${{ matrix.arch }}-w64-mingw32 \
             --prefix=/usr/local/${{ matrix.arch }}-w64-mingw32 \
