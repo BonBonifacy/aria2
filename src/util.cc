@@ -1887,7 +1887,7 @@ std::string abbrevSize(int64_t size)
 
 void sleep(long seconds)
 {
-#if defined(HAVE_WINSOCK2_H)
+#if defined(HAVE_WINSOCK2_H) || defined(_WIN32)
   ::Sleep(seconds * 1000);
 #elif HAVE_SLEEP
   ::sleep(seconds);
@@ -1902,7 +1902,7 @@ void usleep(long microseconds)
 {
 #ifdef HAVE_USLEEP
   ::usleep(microseconds);
-#elif defined(HAVE_WINSOCK2_H)
+#elif defined(HAVE_WINSOCK2_H) || defined(_WIN32)
 
   LARGE_INTEGER current, freq, end;
 
