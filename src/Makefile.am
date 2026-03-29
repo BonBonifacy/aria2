@@ -697,9 +697,8 @@ libaria2_la_SOURCES = $(SRCS)
 
 
 AM_CPPFLAGS = \
-	-I$(top_srcdir)/lib -I$(top_srcdir)/intl\
 	-I$(srcdir)/includes -I$(builddir)/includes\
-	-DLOCALEDIR=\"@localedir@\" @DEFS@ \
+	-DDEFS_H @DEFS@ \
 	@EXTRACPPFLAGS@ \
 	@ZLIB_CFLAGS@ \
 	@LIBUV_CFLAGS@ \
@@ -738,8 +737,7 @@ EXTLDADD = @ALLOCA@ \
 	@LIBCARES_LIBS@ \
 	@WSLAY_LIBS@ \
 	@TCMALLOC_LIBS@ \
-	@JEMALLOC_LIBS@ \
-	@LTLIBINTL@
+	@JEMALLOC_LIBS@
 
 LDADD = libaria2.la
 
