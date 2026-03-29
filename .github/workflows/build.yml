@@ -148,11 +148,9 @@ jobs:
             --without-gnutls \
             --without-openssl \
             --with-wintls \
-            ARIA2_STATIC=yes \
-            CPPFLAGS="-I/usr/local/${{ matrix.arch }}-w64-mingw32/include" \
-            LDFLAGS="-L/usr/local/${{ matrix.arch }}-w64-mingw32/lib"
+            ARIA2_STATIC=yes
           make -j$(nproc)
-          ${{ matrix.arch }}-w64-mingw32-strip src/aria2c.exe
+          strip src/aria2c.exe
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
